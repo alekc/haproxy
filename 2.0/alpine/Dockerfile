@@ -42,7 +42,7 @@ RUN set -x \
 		" \
 	' \
 	&& nproc="$(getconf _NPROCESSORS_ONLN)" \
-	&& eval "make -C /usr/src/haproxy -j '$nproc' all $makeOpts" \
+	&& eval "make -C /usr/src/haproxy -j '$nproc' all $makeOpts EXTRA_OBJS='contrib/prometheus-exporter/service-prometheus.o'" \
 	&& eval "make -C /usr/src/haproxy install-bin $makeOpts" \
 	\
 	&& mkdir -p /usr/local/etc/haproxy \
